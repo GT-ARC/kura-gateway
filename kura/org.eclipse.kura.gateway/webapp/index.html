@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="keywords" content="AngularJS" />
+    <meta name="description" content="Kura Sensor Tracking Interface" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Kura Sensor Tracking Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="angular/bower_components/angular-material/angular-material.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="angular/bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet">
+    <link href="angular/app/styles/home.css" rel="stylesheet" />
+    <style>
+        /* required for icons place them vertically in the middle */
+    </style>
+   
+</head>
+
+<body ng-app="App" layout="row" ng-controller="IndexCtrl" ng-cloak>
+    <div layout="column" layout-fill>
+     
+        <header style="color:white;">
+            <md-toolbar style="background-color:#00AB59;" layout="row" class="md-whiteframe-z1 md-primary md-hue-2">
+                <md-toolbar-filler layout="row" layout-align="center center" >
+                          <img width="40px" src="angular/app/assets/img/isco.png">      
+                </md-toolbar-filler>
+                
+                <div class="md-toolbar-tools" style="background-color:#00AB59;">
+                    <h1 flex layout-align="center center" style="color:white; ">
+                        <span>{{title | uppercase}}</span>
+                    </h1> </div>
+            </md-toolbar>
+        </header>
+        <main class="md-padding" layout="row" flex>
+            <md-content flex id="content">
+                <div class="fade-view" ui-view=""> </div>
+            </md-content>
+        </main>
+    </div>
+    <script src="angular/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="angular/bower_components/angular/angular.js"></script>
+    <script src="angular/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="angular/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="angular/bower_components/angular-material/angular-material.js"></script>
+    <script src="angular/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="angular/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="angular/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="angular/bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>
+    <script src="angular/app/libs/netatmo-bundle.js"></script>
+    <script src="angular/app/app.js"></script>
+    <script src="angular/app/controllers/indexCtrl.js"></script>
+    <script src="angular/app/controllers/homeCtrl.js"></script>
+</body>
+                
+                
+</html>

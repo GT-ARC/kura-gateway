@@ -1,0 +1,190 @@
+<div ng-controller="HomeCtrl" ng-cloak="" class="carddemoBasicUsage">
+ 
+    <style>
+        table {
+            width: 100%;
+        }
+        
+        table#t01,
+        th,
+        td {
+            border: 1px solid #bdbdbd;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+        
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        
+        table#t01 th {
+            background-color: #2196f3;
+            color: white;
+        }
+    </style>
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
+        <div flex="100" layout="row" layout-wrap>
+            <div flex="49" flex-md="29" flex-sm="100" flex-xs="100" style="margin: 4px;width:49%;box-shadow: none;background: transparent">
+                <md-toolbar style="background: #2b5e86" slide-toggle="#derp" class="demo-toolbar md-primary _md _md-toolbar-transitions">
+                    <h3 style=" color: white" class="ng-binding ng-isolate-scope md-toolbar-tools">Netatmo Indoor Device</h3>
+                    <div class="md-toolbar-tools">
+                        <p style="color: #bbdefb;font-size: 18.5px" class="ng-binding ng-isolate-scope"> Temp: {{indoorDevice.Temperature}}C | Pres: {{indoorDevice.Pressure}} mbar | Hum:{{indoorDevice.Humidity}} | CO2:{{indoorDevice.CO2}} </p>
+                    </div>
+                </md-toolbar>
+                <div id="derp" class="slideable">
+                    <md-card style="margin:0px 2px 0px 0px">
+                        <table id="t01" style="overflow: hidden">
+                            <tr>
+                                <td><span>Device ID:</span></td>
+                                <td><span>{{indoorDevice.id}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Abosulute Pressure :</span></td>
+                                <td><span>{{indoorDevice.AbsolutePressure}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>CO2:</span></td>
+                                <td><span>{{indoorDevice.CO2}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Humidity:</span></td>
+                                <td><span>{{indoorDevice.Humidity}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Pressure:</span></td>
+                                <td><span>{{indoorDevice.Pressure}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Measurement Time:</span></td>
+                                <td><span>{{indoorDevice.date_min_temp}}<span
+									ng-show="{{indoorDevice.date_min_temp}}">-</span>{{indoorDevice.date_max_temp}} </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Temperature:</span></td>
+                                <td><span>{{indoorDevice.Temperature}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Max Device Temperature:</span></td>
+                                <td><span>{{indoorDevice.max_temp}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Min Device Temperature: </span></td>
+                                <td><span>{{indoorDevice.min_temp}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Request Time:</span></td>
+                                <td><span>{{indoorDevice.time_utc}}</span></td>
+                            </tr>
+                        </table>
+                    </md-card>
+                </div>
+            </div>
+            <div flex="49" flex-md="69" flex-sm="100" flex-xs="100" style="margin: 4px;width:49%;box-shadow: none;background: transparent">
+                <md-toolbar style="background: #2b5e86" slide-toggle="#netatmo-outdoor" class="demo-toolbar md-primary _md _md-toolbar-transitions" ng-repeat="device in outdoorDevices">
+                    <h3 style="color: white" class="ng-binding ng-isolate-scope md-toolbar-tools">Netatmo Outdoor Device</h3>
+                    <div class="md-toolbar-tools">
+                        <p style="color: #bbdefb;font-size: 18.5px" class="ng-binding ng-isolate-scope"> Temp: {{device.Temperature}}C | Hum:{{device.Humidity}}</p>
+                    </div>
+                </md-toolbar>
+                <div id="netatmo-outdoor" class="slideable">
+                    <md-card ng-repeat="device in outdoorDevices" style="margin:0px 2px 0px 0px">
+                        <table id="t01">
+                            <tr ng-repeat="(key, val) in device " data-title="key">
+                                <td><span>{{key}}:</span></td>
+                                <td><span>{{val}}</span></td>
+                            </tr>
+                        </table>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+        <div flex="100" layout="row" layout-wrap>
+            <md-card flex="49" flex-md="29" flex-sm="100" flex-xs="100" ng-repeat="device in kuraDevices" style="margin:4px;width:49%;box-shadow: none;background: transparent">
+                <md-toolbar style="background: #2b5e86" toolbarid="#id-{{$index}}" class="component demo-toolbar md-primary _md _md-toolbar-transitions">
+                    <h3 style=" color: white" class="ng-binding ng-isolate-scope md-toolbar-tools">{{device.Model}} Sensor</h3>
+            
+                    <div class="md-toolbar-tools" style="color:white;font-size: 14px">
+                        <!-- <div flex="100" layout="row"  ng-init="formatOutputs($event, device, device.Output, device.Unit)"> -->
+                        <div flex="100" layout="row">
+                            <div flex="30" ng-repeat="output in getMeasurement(device.Output, device.Unit)">
+                                <p flex=""style="color: #bbdefb;font-size: 15px;margin:4px" class="ng-binding ng-isolate-scope"> {{output}} |</p>
+<!--                                 <p flex=""style="color: #bbdefb;font-size: 18.5px;margin:5px" class="ng-binding ng-isolate-scope"> {{device.Output}} {{device.Unit}} </p> -->
+                                
+                            </div>
+                            <div flex="65" style="text-align: right">
+                                <md-button class="md-mini" ng-click="removeDevice($event, device)" aria-label="Remove Device" class="md-raised md-warn">Remove</md-button>
+                                <md-button class="md-mini" ng-click="keepDevice($event, device)" aria-label="Send Keep Alive message" class="md-raised md-primary"> Keep Alive</md-button>
+                                <md-button class="md-mini" ng-click="switchOnOff($event, device)" aria-label="Device Status" class="md-raised md-primary"> {{device.Status != "true" ? "ACTIVATED" : "DISABLED"}} </md-button>
+                            </div>
+                        </div>
+                    </div>
+                </md-toolbar>
+                <div id="id-{{$index}}" style="display: none;" isShown="false" >
+                        <table id="t01" style="overflow: hidden">
+                            <tr>
+                                <td><span>Status</span></td>
+                                <td><span>{{device.Status}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Output</span></td>
+                                <td><span>{{device.Output}} - {{device.Unit}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Model</span></td>
+                                <td><span>{{device.Model}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>ID</span></td>
+                                <td><span>{{device.UUID}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>lowpanIP</span></td>
+                                <td><span>{{device.lowpanIPv6}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>ConnectedDevice</span></td>
+                                <td><span>{{device.ConnectedDevice}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>DeploymentDate</span></td>
+                                <td><span>{{device.DeploymentDate}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Location</span></td>
+                                <td><span>{{device.Location.Latitude}} - {{device.Location.Longitude}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>KeepAlive</span></td>
+                                <td><span>{{device.AliveTime}}</span></td>
+                            </tr>
+                        </table>
+                </div>
+            </md-card>
+        </div>
+    </md-content>
+    <script type="application/javascript">
+         $(document).on('click', '.component', function(e) {
+        	 e.stopPropagation();
+             console.debug($(this).attr('toolbarid'));
+             var currentId = $(this).attr('toolbarid');
+             var state = $(currentId).attr('isShown');   
+             if(state == "false"){
+                 $(currentId).slideToggle(100);
+                 $(currentId).attr('isShown','true');
+             }else{
+                 $(currentId).slideToggle(100);
+                 $(currentId).attr('isShown','false');
+             }
+         });
+        
+    </script>

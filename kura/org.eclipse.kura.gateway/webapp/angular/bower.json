@@ -1,0 +1,29 @@
+{
+  "name": "Sensor Dashboard",
+  "version": "1.0.0",
+  "authors": [
+    "Cem Akpolat<akpolatcem@gmail.com>"
+  ],
+  "description": "bower init",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "*",
+    "angular-material": "*",
+    "angular-material-icons": "*",
+    "angular-messages": "*",
+    "angular-ui-router": "*",
+    "svg-morpheus": "*",
+    "jquery":"*",
+    "angular-aria":"*"
+  }
+}

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Coapserver
+Bundle-SymbolicName: org.eclipse.kura.coapserver;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.kura.coapserver.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Service-Component: OSGI-INF/*.xml
+Import-Package: org.osgi.framework;version="1.3.0",
+ org.osgi.service.component;version="1.2.2",
+ org.slf4j;version="1.7.21"
+Bundle-ClassPath: resources/org.eclipse.paho.client.mqttv3-1.0.2.jar, resources/californium-osgi-1.0.0-SNAPSHOT.jar, resources/json-20160212.jar,
+ .
+
+

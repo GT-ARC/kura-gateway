@@ -1,0 +1,20 @@
+#Deployment Plugin Project File
+#Thu Mar 28 11:11:46 CET 2019
+build.ant.name=<.>/gateway_build.xml
+build.dp.file=<.>/gateway.dp
+build.location=
+bundles.0.bundle_path=<.>/plugins/org.eclipse.kura.gateway_1.0.0.201903281111.jar
+bundles.0.customizer=false
+bundles.0.headers.count=0
+bundles.0.missing=false
+bundles.0.name=bundles/org.eclipse.kura.gateway_1.0.0.201903281111.jar
+bundles.0.symbolic_name=org.eclipse.kura.gateway;singleton\:\=true
+bundles.0.version=1.0.0.201903281111
+bundles.count=1
+certificates.count=0
+general.signbundles=false
+headers.other.headers=
+headers.symbolic.name=gateway
+headers.version=1.0.0
+resources.count=0
+
